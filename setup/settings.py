@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
+
 
 # Application definition
 
@@ -137,11 +139,12 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#fazer um metoddo para não mandar para o git como a chave segreta
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'APP': {
-            'client_id': ' ',
-            'secret': ' ',
+            'client_id': str(os.getenv('GITHUB_CLIENT_ID')),
+            'secret': str(os.getenv('GITHUB_SECRET')),
             'key': ''
         }
     }
