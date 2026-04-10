@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 SITE_ID = 1
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -140,12 +141,22 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #fazer um metoddo para não mandar para o git como a chave segreta
+#pegue as informações no .evn pois não irei mandar para o git
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'APP': {
-            'client_id': str(os.getenv('GITHUB_CLIENT_ID')),
-            'secret': str(os.getenv('GITHUB_SECRET')),
+            'client_id': '',
+            'secret': '',
             'key': ''
         }
     }
 }
+
+
+LOGIN_REDIRECT_URL = '/members/'
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+ACCOUNT_LOGOUT_ON_GET= True
+
+LOGOUT_REDIRECT_URL = '/'
